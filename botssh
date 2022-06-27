@@ -14,16 +14,16 @@ ShellBot.username
 # - Funcao menu
 menu() {
     local msg
-        msg+="━━━━━━━✦✗✦━━━━━━━━\n"
+        msg="━━━━━━━✦✗✦━━━━━━━━\n"
         msg+="OLÁ <b>${message_from_first_name[$id]}</b>, BEM VINDO(a) 🙂\n"
-        msg+="Seu 🆔 [@${message_new_chat_member_username[$id]:-null}]\n
-        msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="GERE SEU TESTE AGORA MESMO!\n\n"
+        msg+="Seu 🆔 <b>${message_new_chat_member_username[$id]}\n"
+        msg+="━━━━━━━✦✗✦━━━━━━━━\n"
+        msg+="GERE SEU TESTE AGORA MESMO!\n"
         msg+="━━━━━━━✦✗✦━━━━━━━━\n"
         msg+="<b>👇 ARQUIVOS DISPONÍVEIS NO MOMENTO 👇</b>\n"
         msg+="━━━━━━━✦✗✦━━━━━━━━\n"
         msg+="<b>🔴 CLARO 🟣 VIVO 🔵 TIM</b>\n\n"
-        msg+="Em breve mais conexões 😉 <b>V2Ray</b>🤭
+        msg+="Em breve mais conexões 😉 <b>V2Ray</b>🤭"
         msg+="━━━━━━━✦✗✦━━━━━━━━\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
@@ -36,7 +36,7 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "<b>OPPA, Calma ai, você já tem seu arquivo válido... volte amanhã 🤨</b>"
+        --text "OPPA, Calma ai, você já tem seu arquivo válido... volte amanhã 🤨"
       return 0
     }
     usuario=$(echo SSH$(( RANDOM% + 250 )))
@@ -67,7 +67,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 #enviar app
 enviarapp() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO APLICATIVO..."
+        --text "♻️ ENVIANDO APLICATIVO... Aguarde"
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/base.apk" \
     return 0
@@ -77,7 +77,7 @@ enviarapp() {
 #enviar sks
 enviarsks() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO ARQUIVOS SKS..."
+        --text "♻️ ENVIANDO ARQUIVOS SKS.. Aguarde"
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/CLARO.sks" \
     return 0
@@ -93,7 +93,7 @@ enviarsks() {
 #enviar ehi
 enviarehi() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO ARQUIVOS EHI..."
+        --text "♻️ ENVIANDO ARQUIVOS EHI... Aguarde"
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/CLARO.ehi" \
     return 0
@@ -121,7 +121,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GERAR TE
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 BAIXAR APLICATIVO 🔰' --callback_data 'appenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARQUIVOS SKS 🔰' --callback_data 'sksenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARQUIVOS EHI 🔰' --callback_data 'ehienviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '👨‍💻COMPRE AQUI👨‍💻'  --callback_data '2' --url 't.me/admin' # privado
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '👨‍💻COMPRE AQUI👨‍💻'  --callback_data '2' --url 't.me/MENT4LL' # privado
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '👥 GRUPO CONECTA4G 👥‍'  --callback_data '3' --url 'https://t.me/modderajudagrupo' # Grupo Conecta4G
 ShellBot.InlineKeyboardButton --button 'botao1' --line 6 --text '⚠️ TERMOS ⚠️'  --callback_data '4' --url 'https://bitbin.it/WUwitdNa/raw/' # termos
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
