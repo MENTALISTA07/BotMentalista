@@ -14,9 +14,9 @@ ShellBot.username
 # - Funcao menu
 menu() {
     local msg
-        msg="━━━━━━━✦✗✦━━━━━━━━\n"
+        msg+="━━━━━━━✦✗✦━━━━━━━━\n"
         msg+="OLÁ <b>${message_from_first_name[$id]}</b>, BEM VINDO(a) 🙂\n"
-        msg="Seu 🆔 [@${message_new_chat_member_username[$id]:-null}]\n
+        msg+="Seu 🆔 [@${message_new_chat_member_username[$id]:-null}]\n
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
         msg+="GERE SEU TESTE AGORA MESMO!\n\n"
         msg+="━━━━━━━✦✗✦━━━━━━━━\n"
@@ -36,7 +36,7 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "OPPA, Calma ai, você já tem seu arquivo válido... volte amanhã 🤨"
+        --text "<b>OPPA, Calma ai, você já tem seu arquivo válido... volte amanhã 🤨</b>"
       return 0
     }
     usuario=$(echo SSH$(( RANDOM% + 250 )))
